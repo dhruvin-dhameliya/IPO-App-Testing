@@ -1,19 +1,9 @@
 import cron from 'node-cron';
-import fetchRegisterBigshareonline from "../Controllers/Register/register-bigshareonline.js";
 import fetchRegisterLinkintime from "../Controllers/Register/register-linkintime.js";
-import fetchRegisterMaashitla from "../Controllers/Register/register-maashitla.js";
-import fetchRegisterSatellitecorporate from "../Controllers/Register/register-satellitecorporate.js";
-import fetchRegisterBeetalmail from "../Controllers/Register/register-beetalmail.js";
-import fetchRegisterAlankit from "../Controllers/Register/register-alankit.js";
 
 
 const fetchAllRegister = async () => {
-    // await fetchRegisterBigshareonline();
     await fetchRegisterLinkintime();
-    // await fetchRegisterMaashitla();
-    // await fetchRegisterSatellitecorporate();
-    // await fetchRegisterBeetalmail();
-    // await fetchRegisterAlankit();
 };
 
 
@@ -41,6 +31,8 @@ const scheduleFetch = (time, message) => {
         } catch (error) {
             console.error(`Error fetching companies at ${message}:`, error.message);
         }
+    }, {
+        timezone: "Asia/Kolkata" // Use IST for scheduling
     });
 };
 
