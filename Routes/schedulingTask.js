@@ -14,6 +14,7 @@ const scheduleTimes = [
     { time: "30 2 * * *", message: "2:30 AM" }, // 2:30 AM
     { time: "0 3 * * *", message: "3:00 AM" },  // 3:00 AM
     { time: "30 3 * * *", message: "3:30 AM" }, // 3:30 AM
+    { time: "0 4 * * *", message: "4:00 AM" },  // 4:00 AM
     { time: "0 7 * * *", message: "7:00 AM" },  // 7:00 AM
     { time: "0 8 * * *", message: "8:00 AM" },  // 8:00 AM
     { time: "0 9 * * *", message: "9:00 AM" },  // 9:00 AM
