@@ -8,6 +8,9 @@ const fetchAllRegister = async () => {
 
 
 const scheduleTimes = [
+    { time: "0 13 * * *", message: "1:00 PM" },  // 1:00 PM (testing)
+
+
     { time: "0 1 * * *", message: "1:00 AM" },  // 1:00 AM
     { time: "30 1 * * *", message: "1:30 AM" }, // 1:30 AM
     { time: "0 2 * * *", message: "2:00 AM" },  // 2:00 AM
