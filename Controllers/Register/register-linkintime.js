@@ -2,7 +2,6 @@ import axios from "axios";
 import xml2js from "xml2js";
 import dotenv from "dotenv";
 import IpoModel from "../../Models/IpoModel.js";
-import UpdateTimeModel from "../../Models/update_time_model.js";
 import getRandomUserAgent from "../../Utils/userAgentHelper.js";
 
 dotenv.config();
@@ -40,30 +39,16 @@ const fetchCompanyId = async () => {
 };
 
 
-
-// Fetch and update data
 const fetchRegisterLinkintime = async () => {
     try {
         const data = await fetchCompanyId();
 
-        for (const { company_id, company_name } of data) {
-            const isExist = await IpoModel.findOne({ company_name });
-
-            if (!isExist) {
-                // Add new company to IpoModel
-                await IpoModel.create({
-                    company_id,
-                    company_name,
-                    registrar_name: "linkintime"
-                });
-
-                // Log the update in UpdateTimeModel
-                await UpdateTimeModel.create({
-                    company_name,
-                    updated_at: new Date()
-                });
-
-                console.log(`New company added: ${company_name}`);
+        for (let i = 0; i < data.length; i++) {
+            const { company_id, company_name } = data[i];
+            const isExist = await IpoModel.findOne({ company_name: company_name });
+            if (isExist) break;
+            if (company_id) {
+                await IpoModel.create({ company_id, company_name, registrar_name: "linkintime" });
             }
         }
         return;

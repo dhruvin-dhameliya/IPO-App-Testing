@@ -3,7 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import ConnectToDB from "./Config/ConnectToDB.js";
 import ipoResultRoute from "./Routes/ipoResultRoute.js";
-import schedulingTask from "./Routes/schedulingTask.js";
+import schedulingTask from "./Tasks/trigger-fetch-ipo-allotment.js";
 
 dotenv.config();
 
